@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: my-demo-app
-        image: r.cfcr.io/{{CF_ACCOUNT}}/my-sample-application:{{CF_SHORT_REVISION}}
+        image: {{MyAppDockerImage}}
         imagePullPolicy: Always
         ports:
         - name: http
