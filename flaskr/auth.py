@@ -31,7 +31,7 @@ def login_required(view):
 
 @bp.before_app_request
 def load_logged_in_user():
-    """If a user id is stored in the session, load the user object from
+    """test If a user id is stored in the session, load the user object from
     the database into ``g.user``."""
     user_id = session.get("user_id")
 
