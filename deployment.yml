@@ -12,7 +12,7 @@ spec:
         app: python-demo
     spec:
       containers:
-        - name: apisvc
+        - name: python-demo
           image: myrepo/python-demo:{{CF_BRANCH}}-{{CF_REVISION}}
           ports:
             - containerPort: 80
