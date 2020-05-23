@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: my-demo-app
+  annotations:
+    branch: {{CF_BRANCH_TAG_NORMALIZED}}
+    source-repository: {{CF_REPO_NAME}}  
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        name: my-demo-app
+        app: my-demo-app
+    spec:
+      containers:
+      - name: my-demo-app
+        image: r.cfcr.io/{{CF_ACCOUNT}}/my-sample-application:{{CF_SHORT_REVISION}}
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
