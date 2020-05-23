@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: api-svc
+  name: flaskapp
 spec:
   replicas: 1
   template:
@@ -9,11 +9,11 @@ spec:
       annotations:
         revision: "{{CF_REVISION}}"
       labels:
-        app: api-svc
+        app: flaskapp
     spec:
       containers:
         - name: apisvc
-          image: myrepo/apisvc:{{CF_BRANCH}}-{{CF_REVISION}}
+          image: myrepo/flaskapp:{{CF_BRANCH}}-{{CF_REVISION}}
           ports:
             - containerPort: 80
               name: http
