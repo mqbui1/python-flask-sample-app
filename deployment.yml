@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: flaskapp
-        image: {{MyAppDockerImage}}
+        image: mqbui1/{{CF_ACCOUNT}}/my-sample-application:{{CF_SHORT_REVISION}}
         imagePullPolicy: Always
         ports:
         - name: http
