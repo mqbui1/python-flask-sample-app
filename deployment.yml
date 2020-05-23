@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   name: my-demo-app
   annotations:
-    branch: {{CF_BRANCH_TAG_NORMALIZED}}
-    source-repository: {{CF_REPO_NAME}}  
+    branch: test
+    source-repository: test 
 spec:
   replicas: 4
   template:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: my-demo-app
-        image: r.cfcr.io/{{CF_ACCOUNT}}/my-sample-application:{{CF_SHORT_REVISION}}
+        image: test
         imagePullPolicy: Always
         ports:
         - name: http
