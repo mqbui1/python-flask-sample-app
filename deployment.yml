@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: flaskapp
-        #image: flaskapp-application
+        image: myrepo/mqbui1:{{CF_BRANCH}}-{{CF_REVISION}}
         imagePullPolicy: Always
         ports:
         - name: http
