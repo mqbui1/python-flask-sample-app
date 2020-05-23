@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: python-demo
-          image: myrepo/python-demo:{{CF_BRANCH}}-{{CF_REVISION}}
+          image: mqbui1/pythonflasksampleapp:{{CF_BRANCH}}-{{CF_REVISION}}
           ports:
             - containerPort: 80
               name: http
