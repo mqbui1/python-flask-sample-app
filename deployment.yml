@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: flaskapp
+  name: my-demo-app
   annotations:
     branch: {{CF_BRANCH_TAG_NORMALIZED}}
     source-repository: {{CF_REPO_NAME}}  
@@ -10,11 +10,12 @@ spec:
   template:
     metadata:
       labels:
-        app: flaskapp
+        name: my-demo-app
+        app: my-demo-app
     spec:
       containers:
-      - name: mqbui1
-        image: myrepo/mqbui1:{{CF_BRANCH}}-{{CF_REVISION}}
+      - name: my-demo-app
+        image: r.cfcr.io/{{CF_ACCOUNT}}/my-sample-application:{{CF_SHORT_REVISION}}
         imagePullPolicy: Always
         ports:
         - name: http
