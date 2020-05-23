@@ -1,23 +1,19 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: my-demo-app
-  annotations:
-    branch: {{CF_BRANCH_TAG_NORMALIZED}}
-    source-repository: {{CF_REPO_NAME}}  
+  name: api-svc
 spec:
-  replicas: 4
+  replicas: 1
   template:
     metadata:
+      annotations:
+        revision: "{{CF_REVISION}}"
       labels:
-        name: my-demo-app
-        app: my-demo-app
+        app: api-svc
     spec:
       containers:
-      - name: my-demo-app
-        image: mqbui1/my-sample-application
-        imagePullPolicy: Always
-        ports:
-        - name: http
-          containerPort: 8080
-          protocol: TCP
+        - name: apisvc
+          image: myrepo/apisvc:{{CF_BRANCH}}-{{CF_REVISION}}
+          ports:
+            - containerPort: 80
+              name: http
