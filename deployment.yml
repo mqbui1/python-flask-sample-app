@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: my-demo-app
+  name: flaskapp
   annotations:
     branch: {{CF_BRANCH_TAG_NORMALIZED}}
     source-repository: {{CF_REPO_NAME}}  
@@ -10,12 +10,12 @@ spec:
   template:
     metadata:
       labels:
-        name: my-demo-app
-        app: my-demo-app
+        name: flaskapp
+        app: flaskapp
     spec:
       containers:
-      - name: my-demo-app
-        image: r.cfcr.io/{{CF_ACCOUNT}}/my-sample-application:{{CF_SHORT_REVISION}}
+      - name: flaskapp
+        image: {{MyAppDockerImage}}
         imagePullPolicy: Always
         ports:
         - name: http
